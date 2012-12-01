@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="adw_changelog">
+
+
+&lt;b>Version 0.6:&lt;/b>&lt;br>
+&lt;b>--------------&lt;/b>&lt;br>
+-Actualizado fuentes LauncherAdvanced 0,6 &lt;br>
+-Se utilizan fuentes abiertas AnderWeb - gracias &lt;br>
+-Estandarizados desktop &lt;br>
+-Icones de la fijada con buen tamaño &lt;br>
+-5 Iconos para el dock con 2 abierta &lt;br>
+-Grid en aplicaciones estándar como horizontal &lt;br>
+-Carpetas eliminados y cosas que hacen pesado y no es necesario &lt;br>
+
+</string>
+</resources>

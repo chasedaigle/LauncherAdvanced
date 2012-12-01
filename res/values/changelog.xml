@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="adw_changelog">
+
+&lt;b>Version 0.6:&lt;/b>&lt;br>
+&lt;b>--------------&lt;/b>&lt;br>
+-Updated sources LauncherAdvanced 0.6 &lt;br>
+-Used open sources AnderWeb - thanks &lt;br>
+-Standardized desktop
+-Fixed icons with good size
+-5 Icons to the dock with 2 open
+-Grid apps as standard in Horizontal
+-Deleted folders and things that make heavy and does not need
+
+</string>
+</resources>

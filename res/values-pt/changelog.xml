@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="adw_changelog">
+
+&lt;b>Versão 0.6:&lt;/b>&lt;br>
+&lt;b>--------------&lt;/b>&lt;br>
+-Atualizado fontes LauncherAdvanced 0.6 &lt;br>
+-Usada fontes abertas AnderWeb - obrigado &lt;br>
+-Padronizado área de trabalho &lt;br>
+-Icones fixos com bom tamanho &lt;br>
+-5 icones para a dock com 2 em aberto &lt;br>
+-Grade de apps em Horizontal como padrão &lt;br>
+-Excluído pastas e coisas que tornam pesado e não tem necessidade &lt;br>
+
+</string>
+</resources>
