@@ -572,10 +572,8 @@ containing a value of this type.
         public static final int timepicker_up_normal=0x7f0200ac;
         public static final int timepicker_up_pressed=0x7f0200ad;
         public static final int timepicker_up_selected=0x7f0200ae;
-        public static final int wallpaper_adw=0x7f0200af;
-        public static final int wallpaper_adw_small=0x7f0200b0;
-        public static final int wallpaper_la=0x7f0200b1;
-        public static final int wallpaper_la_small=0x7f0200b2;
+        public static final int wallpaper_la=0x7f0200af;
+        public static final int wallpaper_la_small=0x7f0200b0;
     }
     public static final class id {
         public static final int Button_Ok_App=0x7f07000f;

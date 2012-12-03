@@ -2,6 +2,14 @@
 <resources>
 <string name="la_changelog">
 
+&lt;b>Versão 0.7:&lt;/b>&lt;br>
+&lt;b>--------------&lt;/b>&lt;br>
+-Atualizado fontes LauncherAdvaned 0.7 &lt;br>
+-Alterado Imagens direto na fonte &lt;br>
+-Ajustado tamanho dos icones na dock para não comprimir os apps da grade &lt;br>
+-Corrigido palavras em alguns idiomas &lt;br>
+-Retirado todo o trabalho em ADW, agora sendo somente LauncherAdvanced &lt;br>
+
 &lt;b>Versão 0.6:&lt;/b>&lt;br>
 &lt;b>--------------&lt;/b>&lt;br>
 -Atualizado fontes LauncherAdvanced 0.6 &lt;br>
