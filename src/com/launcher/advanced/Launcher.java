@@ -231,7 +231,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     private FolderInfo mFolderInfo;
 
     /**
-     * ADW: now i use an ActionButton instead of a fixed app-drawer button
+     * la: now i use an ActionButton instead of a fixed app-drawer button
      */
     private ActionButton mHandleView;
     /**
@@ -257,7 +257,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 
 	private DesktopBinder mBinder;
 	/**
-	 * ADW: New views/elements for dots, dockbar, lab/rab, etc
+	 * la: New views/elements for dots, dockbar, lab/rab, etc
 	 */
 	private ImageView mPreviousView;
 	private ImageView mNextView;
@@ -270,14 +270,14 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 	private View mDrawerToolbar;
     private DeleteZone mDeleteZone;
 	/**
-	 * ADW: variables to store actual status of elements
+	 * la: variables to store actual status of elements
 	 */
 	private boolean allAppsOpen=false;
 	private final boolean allAppsAnimating=false;
 	private boolean showingPreviews=false;
 	private boolean mShouldHideStatusbaronFocus=false;
 	/**
-	 * ADW: A lot of properties to store the custom settings
+	 * la: A lot of properties to store the custom settings
 	 */
 	private boolean allowDrawerAnimations=true;
 	private boolean newPreviews=true;
@@ -303,7 +303,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 
     private boolean mBlockDesktop=true;
 	/**
-	 * ADW: Home/Swype down binding constants
+	 * la: Home/Swype down binding constants
 	 */
 	protected static final int BIND_NONE=0;
 	protected static final int BIND_DEFAULT=1;
@@ -327,31 +327,31 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 	*/
 	private int mSwipeupAction = BIND_NOTIFICATIONS;
 	/**
-	 * ADW:Wallpaper intent receiver
+	 * la:Wallpaper intent receiver
 	 */
 	private static WallpaperIntentReceiver sWallpaperReceiver;
 	private boolean mShouldRestart=false;
 	private boolean mMessWithPersistence=false;
-	//ADW Theme constants
+	//la Theme constants
 	public static final int THEME_ITEM_BACKGROUND=0;
 	public static final int THEME_ITEM_FOREGROUND=1;
-	public static final String THEME_DEFAULT="ADW.Default theme";
+	public static final String THEME_DEFAULT="la.Default theme";
 	private Typeface themeFont=null;
 	private boolean mIsEditMode=false;
 	private View mScreensEditor=null;
 	private boolean mIsWidgetEditMode=false;
 	private LauncherAppWidgetInfo mlauncherAppWidgetInfo=null;
-	///TODO:ADW. Current code fully ready for upto 9
+	///TODO:la. Current code fully ready for upto 9
 	//but need to add more drawables for the desktop dots...
 	//or completely redo the desktop dots implementation
 	private final static int MAX_SCREENS=7;
-	//ADW: NAVIGATION VALUES FOR THE NEXT/PREV CATALOG ACTIONS
+	//la: NAVIGATION VALUES FOR THE NEXT/PREV CATALOG ACTIONS
 	private final static int ACTION_CATALOG_PREV=1;
 	private final static int ACTION_CATALOG_NEXT=2;
-	//ADW: Custom counter receiver
+	//la: Custom counter receiver
 	private CounterReceiver mCounterReceiver;
 	/**
-	 * ADW: Different main dock styles/configurations
+	 * la: Different main dock styles/configurations
 	 */
 	protected static final int DOCK_STYLE_NONE=0;
     protected static final int DOCK_STYLE_3=1;
@@ -409,7 +409,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         mDefaultKeySsb = new SpannableStringBuilder();
         Selection.setSelection(mDefaultKeySsb, 0);
 
-        //ADW: register a sharedpref listener
+        //la: register a sharedpref listener
         getSharedPreferences("launcher.preferences.almostnexus", Context.MODE_PRIVATE).registerOnSharedPreferenceChangeListener(this);
     }
 
@@ -588,14 +588,14 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 		super.onResume();
 		if (shouldRestart())
 			return;
-		// ADW: Use custom settings to set the rotation
+		// la: Use custom settings to set the rotation
 		/*
 		 * this.setRequestedOrientation(
 		 * AlmostNexusSettingsHelper.getDesktopRotation(this)?
 		 * ActivityInfo.SCREEN_ORIENTATION_USER
 		 * :ActivityInfo.SCREEN_ORIENTATION_NOSENSOR );
 		 */
-		// ADW: Use custom settings to change number of columns (and rows for
+		// la: Use custom settings to change number of columns (and rows for
 		// SlidingGrid) depending on phone rotation
 		int orientation = getResources().getConfiguration().orientation;
 		if (orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -619,7 +619,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
             // itself again.
             mWorkspace.post(new Runnable() {
                 public void run() {
-                    //ADW: changed from using ISearchManager to use SearchManager (thanks to Launcher+ source code)
+                    //la: changed from using ISearchManager to use SearchManager (thanks to Launcher+ source code)
                 	SearchManager searchManagerService = (SearchManager) Launcher.this
                     .getSystemService(Context.SEARCH_SERVICE);
                     try {
@@ -637,8 +637,8 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     @Override
     protected void onPause() {
         super.onPause();
-        //ADW: removed cause it was closing app-drawer every time Home button is triggered
-        //ADW: it should be done only on certain circumstances
+        //la: removed cause it was closing app-drawer every time Home button is triggered
+        //la: it should be done only on certain circumstances
         //closeDrawer(false);
         savedOrientation = getResources().getConfiguration().orientation;
     }
@@ -741,7 +741,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 
         mWorkspace = (Workspace) dragLayer.findViewById(R.id.workspace);
         final Workspace workspace = mWorkspace;
-        //ADW: The app drawer is now a ViewStub and we load the resource depending on custom settings
+        //la: The app drawer is now a ViewStub and we load the resource depending on custom settings
         ViewStub tmp=(ViewStub)dragLayer.findViewById(R.id.stub_drawer);
         int drawerStyle=AlmostNexusSettingsHelper.getDrawerStyle(this);
         tmp.setLayoutResource(mDrawerStyles[drawerStyle]);
@@ -781,14 +781,14 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         dragLayer.setIgnoredDropTarget((View)mAllAppsGrid);
         dragLayer.setDragScoller(workspace);
         dragLayer.addDragListener(mDeleteZone);
-        //ADW: Dockbar inner icon viewgroup (MiniLauncher.java)
+        //la: Dockbar inner icon viewgroup (MiniLauncher.java)
         mMiniLauncher = (MiniLauncher) dragLayer.findViewById(R.id.mini_content);
         mMiniLauncher.setLauncher(this);
         mMiniLauncher.setOnLongClickListener(this);
         mMiniLauncher.setDragger(dragLayer);
         dragLayer.addDragListener(mMiniLauncher);
 
-        //ADW: Action Buttons (LAB/RAB)
+        //la: Action Buttons (LAB/RAB)
         mLAB = (ActionButton) dragLayer.findViewById(R.id.btn_lab);
         mLAB.setLauncher(this);
         mLAB.setSpecialIcon(R.drawable.arrow_left);
@@ -801,7 +801,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         dragLayer.addDragListener(mRAB);
         mLAB.setOnClickListener(this);
         mRAB.setOnClickListener(this);
-        //ADW: secondary aActionButtons
+        //la: secondary aActionButtons
         mLAB2 = (ActionButton) dragLayer.findViewById(R.id.btn_lab2);
         mLAB2.setLauncher(this);
         dragLayer.addDragListener(mLAB2);
@@ -810,12 +810,12 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         dragLayer.addDragListener(mRAB2);
         mLAB2.setOnClickListener(this);
         mRAB2.setOnClickListener(this);
-		//ADW: Dots ImageViews
+		//la: Dots ImageViews
         mPreviousView = (ImageView)findViewById(R.id.btn_scroll_left);
 		mNextView = (ImageView)findViewById(R.id.btn_scroll_right);
 		mPreviousView.setOnLongClickListener(this);
 		mNextView.setOnLongClickListener(this);
-        //ADW: ActionButtons swipe gestures
+        //la: ActionButtons swipe gestures
 		mHandleView.setSwipeListener(this);
         mLAB.setSwipeListener(this);
         mLAB2.setSwipeListener(this);
@@ -828,7 +828,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         mRAB2.setDragger(dragLayer);
         mLAB2.setDragger(dragLayer);
 
-		//ADW linearlayout with apptray, lab and rab
+		//la linearlayout with apptray, lab and rab
 		mDrawerToolbar=findViewById(R.id.drawer_toolbar);
 		mHandleView.setNextFocusUpId(R.id.drag_layer);
 		mHandleView.setNextFocusLeftId(R.id.drag_layer);
@@ -840,7 +840,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         mLAB2.setNextFocusLeftId(R.id.drag_layer);
         mRAB2.setNextFocusUpId(R.id.drag_layer);
         mRAB2.setNextFocusLeftId(R.id.drag_layer);
-		//ADW add a listener to the dockbar to show/hide the app-drawer-button and the dots
+		//la add a listener to the dockbar to show/hide the app-drawer-button and the dots
 		mDockBar=(DockBar)findViewById(R.id.dockbar);
 		mDockBar.setDockBarListener(new DockBarListener() {
 			public void onOpen() {
@@ -862,7 +862,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 		if(AlmostNexusSettingsHelper.getDesktopIndicator(this)){
 			mDesktopIndicator=(DesktopIndicator) (findViewById(R.id.desktop_indicator));
 		}
-		//ADW: Add focusability to screen items
+		//la: Add focusability to screen items
         mLAB.setFocusable(true);
         mRAB.setFocusable(true);
         mLAB2.setFocusable(true);
@@ -870,7 +870,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         mPreviousView.setFocusable(true);
 		mNextView.setFocusable(true);
 
-    	//ADW: Load the specified theme
+    	//la: Load the specified theme
     	String themePackage=AlmostNexusSettingsHelper.getThemePackageName(this, THEME_DEFAULT);
     	PackageManager pm=getPackageManager();
     	Resources themeResources=null;
@@ -878,7 +878,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 	    	try {
 				themeResources=pm.getResourcesForApplication(themePackage);
 			} catch (NameNotFoundException e) {
-				//ADW The saved theme was uninstalled so we save the default one
+				//la The saved theme was uninstalled so we save the default one
 			    AlmostNexusSettingsHelper.setThemePackageName(this, Launcher.THEME_DEFAULT);
 			}
     	}
@@ -910,7 +910,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 		Drawable previous = mPreviousView.getDrawable();
 		Drawable next = mNextView.getDrawable();
 		mWorkspace.setIndicators(previous, next);
-		//ADW: EOF Themes
+		//la: EOF Themes
 		updateAlmostNexusUI();
     }
 
@@ -947,9 +947,9 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         if(!uiHideLabels)favorite.setText(info.title);
         favorite.setTag(info);
         favorite.setOnClickListener(this);
-		//ADW: Custom font
+		//la: Custom font
 		if(themeFont!=null) favorite.setTypeface(themeFont);
-		//ADW: Counters stuff
+		//la: Counters stuff
 		favorite.setCounter(info.counter, info.counterColor);
         return favorite;
     }
@@ -1258,7 +1258,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-    	//ADW: If we leave the menu open, on restoration it will try to auto find
+    	//la: If we leave the menu open, on restoration it will try to auto find
     	//the ocupied cells. But this could happed before the workspace is fully loaded,
     	//so it can cause a NPE cause of the way we load the desktop columns/rows count.
     	//I prefer to just close it than diggin the code to make it load later...
@@ -1314,7 +1314,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     public void onDestroy() {
         mDestroyed = true;
     	//setPersistent(false);
-        //ADW: unregister the sharedpref listener
+        //la: unregister the sharedpref listener
         getSharedPreferences("launcher.preferences.almostnexus", Context.MODE_PRIVATE)
         .unregisterOnSharedPreferenceChangeListener(this);
 
@@ -1345,7 +1345,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     @Override
     public void startActivityForResult(Intent intent, int requestCode) {
         if(intent==null)return;
-        //ADW: closing drawer, removed from onpause
+        //la: closing drawer, removed from onpause
         if (requestCode !=REQUEST_SHOW_APP_LIST && //do not close drawer if it is for switching catalogue.
                 !CustomShirtcutActivity.ACTION_LAUNCHERACTION.equals(intent.getAction()))
             closeDrawer(false);
@@ -1451,8 +1451,8 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         menu.add(MENU_GROUP_NORMAL, MENU_SETTINGS, 0, R.string.menu_settings)
                 .setIcon(android.R.drawable.ic_menu_preferences).setAlphabeticShortcut('P')
                 .setIntent(settings);
-		//ADW: add custom settings
-               menu.add(MENU_GROUP_NORMAL, MENU_ALMOSTNEXUS, 0, R.string.menu_adw_settings)
+		//la: add custom settings
+               menu.add(MENU_GROUP_NORMAL, MENU_ALMOSTNEXUS, 0, R.string.menu_la_settings)
 		.setIcon(android.R.drawable.ic_menu_preferences)
 		.setAlphabeticShortcut('X');
 
@@ -1502,7 +1502,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
                 return true;
             case MENU_NOTIFICATIONS:
                 //showNotifications();
-            	//ADW: temp usage for desktop eiting
+            	//la: temp usage for desktop eiting
             	if(allAppsOpen)closeAllApps(false);
             	startDesktopEdit();
                 return true;
@@ -1577,7 +1577,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     private void updateShortcutsForPackage(String packageName) {
         if (packageName != null && packageName.length() > 0) {
             mWorkspace.updateShortcutsForPackage(packageName);
-            //ADW: Update ActionButtons icons
+            //la: Update ActionButtons icons
             mLAB.reloadIcon(packageName);
             mLAB2.reloadIcon(packageName);
             mRAB.reloadIcon(packageName);
@@ -1613,7 +1613,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 	            				onActivityResult(REQUEST_CREATE_APPWIDGET, Activity.RESULT_CANCELED, data);
 	            				// Show a nice toast here to tell the user why the widget is rejected.
 	            				new AlertDialog.Builder(this)
-	            					.setTitle(R.string.adw_version)
+	            					.setTitle(R.string.la_version)
 	            					.setCancelable(true)
 	            					.setIcon(R.drawable.ic_launcher_home)
 	            					.setPositiveButton(getString(android.R.string.ok), null)
@@ -2154,7 +2154,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         }
 
         if (mSavedInstanceState != null) {
-            //ADW: sometimes on rotating the phone, some widgets fail to restore its states.... so... damn.
+            //la: sometimes on rotating the phone, some widgets fail to restore its states.... so... damn.
             try{
                 super.onRestoreInstanceState(mSavedInstanceState);
             }catch(Exception e){}
@@ -2166,7 +2166,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         }
 
         mDesktopLocked = false;
-        //ADW: Show the changelog screen if needed
+        //la: Show the changelog screen if needed
         if(AlmostNexusSettingsHelper.shouldShowChangelog(this)){
 	        try {
 	        	AlertDialog builder = AlmostNexusSettingsHelper.ChangelogDialogBuilder.create(this);
@@ -2234,12 +2234,12 @@ public final class Launcher extends Activity implements View.OnClickListener, On
      */
     public void onClick(View v) {
         Object tag = v.getTag();
-        //ADW: Check if the tag is a special action (the app drawer category navigation)
+        //la: Check if the tag is a special action (the app drawer category navigation)
         if(tag instanceof Integer){
             navigateCatalogs(Integer.parseInt(tag.toString()));
             return;
         }
-        //TODO:ADW Check whether to display a toast if clicked mLAB or mRAB withount binding
+        //TODO:la Check whether to display a toast if clicked mLAB or mRAB withount binding
         if(tag==null && v instanceof ActionButton){
     		Toast t=Toast.makeText(this, R.string.toast_no_application_def, Toast.LENGTH_SHORT);
     		t.show();
@@ -2337,7 +2337,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         	mWorkspace.addInScreen(openFolder, folderInfo.screen, 0, 0, mWorkspace.currentDesktopColumns(), mWorkspace.currentDesktopRows());
         }
         openFolder.onOpen();
-        //ADW: closing drawer, removed from onpause
+        //la: closing drawer, removed from onpause
     	closeDrawer(false);
     }
 
@@ -2355,7 +2355,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         if (mDesktopLocked) {
             return false;
         }
-		// ADW: Show previews on longpressing the dots
+		// la: Show previews on longpressing the dots
 		switch (v.getId()) {
 		case R.id.btn_scroll_left:
 			mWorkspace.performHapticFeedback(
@@ -2426,7 +2426,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     Workspace getWorkspace() {
         return mWorkspace;
     }
-    //ADW: we return a View, so classes using this should cast
+    //la: we return a View, so classes using this should cast
     // to AllAppsGridView or AllAppsSlidingView if they need to access proper members
     View getApplicationsGrid() {
         return (View)mAllAppsGrid;
@@ -2963,7 +2963,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
                      }else{
                     	 for(int i=0;i<packages.length;i++){
                     		 sModel.removePackage(Launcher.this, packages[i]);
-                    		 //ADW: We tell desktop to update packages
+                    		 //la: We tell desktop to update packages
                     		 //(probably will load the standard android icon)
                     		 //to show the user the app is no more available.
                     		 //We may add the froyo code to just load a grayscale version of the icon, but...
@@ -3105,11 +3105,11 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         }
     }
     /****************************************************************
-     * ADW: Start custom functions/modifications
+     * la: Start custom functions/modifications
      ***************************************************************/
 
     /**
-     * ADW: Show the custom settings activity
+     * la: Show the custom settings activity
      */
     private void showCustomConfig(){
     	Intent launchPreferencesIntent = new Intent().setClass(this, MyLauncherSettings.class);
@@ -3143,7 +3143,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         useDrawerCatalogNavigation=AlmostNexusSettingsHelper.getDrawerCatalogsNavigation(this);
     }
     /**
-     * ADW: Refresh UI status variables and elements after changing settings.
+     * la: Refresh UI status variables and elements after changing settings.
      */
     private void updateAlmostNexusUI(){
     	if(mIsEditMode || mIsWidgetEditMode)return;
@@ -3219,7 +3219,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 
     }
     /**
-     * ADW: Create a copy of an application icon/shortcut with a reflection
+     * la: Create a copy of an application icon/shortcut with a reflection
      * @param layoutResId
      * @param parent
      * @param info
@@ -3235,12 +3235,12 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         favorite.setImageDrawable(Utilities.drawReflection(info.icon, this));
         favorite.setTag(info);
         favorite.setOnClickListener(this);
-        //ADW: Counters stuff
+        //la: Counters stuff
         favorite.setCounter(info.counter, info.counterColor);
         return favorite;
     }
     /**
-     * ADW: Create a copy of an folder icon with a reflection
+     * la: Create a copy of an folder icon with a reflection
      * @param layoutResId
      * @param parent
      * @param info
@@ -3272,7 +3272,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         return favorite;
     }
     /**
-     * ADW: Create a copy of an LiveFolder icon with a reflection
+     * la: Create a copy of an LiveFolder icon with a reflection
      * @param layoutResId
      * @param parent
      * @param info
@@ -3307,7 +3307,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         return favorite;
     }
     /**
-     * ADW:Create a smaller copy of an icon for use inside Action Buttons
+     * la:Create a smaller copy of an icon for use inside Action Buttons
      * @param info
      * @return
      */
@@ -3363,7 +3363,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         d=Utilities.scaledDrawable(d, this,uiABTint,uiScaleAB,uiABTintColor);
         return d;
     }
-    //ADW: Previews Functions
+    //la: Previews Functions
     public void previousScreen(View v) {
 	    mWorkspace.scrollLeft();
 	}
@@ -3501,7 +3501,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
                 preview = new LinearLayout(this);
 
                 Rect r = new Rect();
-                //ADW: seems sometimes this throws an out of memory error.... so...
+                //la: seems sometimes this throws an out of memory error.... so...
                 try{
                     resources.getDrawable(R.drawable.preview_background).getPadding(r);
                 }catch(OutOfMemoryError e){}
@@ -3593,7 +3593,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         }
     }
     /**
-     * ADW: Override this to hide statusbar when necessary
+     * la: Override this to hide statusbar when necessary
      */
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
@@ -3606,7 +3606,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 	}
 
 	/************************************************
-	 * ADW: Functions to handle Apps Grid
+	 * la: Functions to handle Apps Grid
 	 */
     public void showAllApps(boolean animated, AppCatalogueFilter filter){
 		if(!allAppsOpen && mAllAppsGrid!=null){
@@ -3719,7 +3719,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     	return mDockBar.isOpen();
     }
     /**
-     * ADW: wallpaper intent receiver for proper trackicng of wallpaper changes
+     * la: wallpaper intent receiver for proper trackicng of wallpaper changes
      */
     private static class WallpaperIntentReceiver extends BroadcastReceiver {
         private WeakReference<Launcher> mLauncher;
@@ -3777,17 +3777,17 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         return false;
     }
 	public void onSharedPreferenceChanged(SharedPreferences sp, String key) {
-		//ADW: Try to add the restart flag here instead on preferences activity
+		//la: Try to add the restart flag here instead on preferences activity
 		if(AlmostNexusSettingsHelper.needsRestart(key)){
 			setPersistent(false);
 			mShouldRestart=true;
 		}else{
-			//TODO: ADW Move here all the updates instead on updateAlmostNexusUI()
+			//TODO: la Move here all the updates instead on updateAlmostNexusUI()
 			if(key.equals("homeOrientation")){
 		        if(!mMessWithPersistence){
 		        	changeOrientation(AlmostNexusSettingsHelper.getDesktopOrientation(this),false);
 		        }else{
-		        	//ADW: If a user changes between different orientation modes
+		        	//la: If a user changes between different orientation modes
 		        	//we temporarily disable persistence to change the app orientation
 		        	//it will be re-enabled on the next onCreate
 		        	setPersistent(false);
@@ -3797,7 +3797,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 				mMessWithPersistence=AlmostNexusSettingsHelper.getSystemPersistent(this);
 				if(mMessWithPersistence){
 					changeOrientation(AlmostNexusSettingsHelper.getDesktopOrientation(this),true);
-					//ADW: If previously in portrait, set persistent
+					//la: If previously in portrait, set persistent
 					//else, it will call the setPersistent on the next onCreate
 					//caused by the orientation change
 					if(savedOrientation==ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
@@ -3854,10 +3854,10 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 		sendBroadcast(ready);
 	}
 	/**
-	 * ADW: Home binding actions
+	 * la: Home binding actions
 	 */
 	public void fireHomeBinding(int bindingValue, int type){
-    	//ADW: switch home button binding user selection
+    	//la: switch home button binding user selection
 		if(mIsEditMode || mIsWidgetEditMode)return;
         switch (bindingValue) {
 		case BIND_DEFAULT:
@@ -4061,7 +4061,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 		super.onStop();
 	}
 	/**
-	 * ADW: Load the specified theme resource
+	 * la: Load the specified theme resource
 	 * @param themeResources Resources from the theme package
 	 * @param themePackage the theme's package name
 	 * @param item_name the theme item name to load
@@ -4081,7 +4081,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 			        return;
                 }
 				if(themeType==THEME_ITEM_FOREGROUND && item instanceof ImageView){
-					//ADW remove the old drawable
+					//la remove the old drawable
 					Drawable tmp=((ImageView)item).getDrawable();
 					if(tmp!=null){
 						tmp.setCallback(null);
@@ -4089,7 +4089,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 					}
 					((ImageView)item).setImageDrawable(d);
 				}else{
-					//ADW remove the old drawable
+					//la remove the old drawable
 					Drawable tmp=item.getBackground();
 					if(tmp!=null){
 						tmp.setCallback(null);
@@ -4187,7 +4187,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 	}
 
 	/**
-	 * ADW: Put the launcher in desktop edit mode
+	 * la: Put the launcher in desktop edit mode
 	 * We could be able to add, remove and reorder screens
 	 */
 	private void startDesktopEdit(){
@@ -4520,7 +4520,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     private void updateCountersForPackage(String packageName, int counter, int color) {
         if (packageName != null && packageName.length() > 0) {
             mWorkspace.updateCountersForPackage(packageName, counter, color);
-            //ADW: Update ActionButtons icons
+            //la: Update ActionButtons icons
             updateCounters(mHandleView, packageName, counter, color);
             updateCounters(mLAB, packageName, counter, color);
             updateCounters(mRAB, packageName, counter,color);
@@ -4630,7 +4630,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
                                 ResolveInfo res = mgr.resolveActivity(appInfo.intent, 0);
                                 UninstallPkg = res.activityInfo.packageName;
                             }
-                            // Dont uninstall ADW ;-)
+                            // Dont uninstall la ;-)
                             if (this.getClass().getPackage().getName().equals(UninstallPkg))
                                 UninstallPkg = null;
                         }catch (Exception e) {

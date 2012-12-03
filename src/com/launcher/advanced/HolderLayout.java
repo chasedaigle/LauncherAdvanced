@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class HolderLayout extends ViewGroup {
-    //ADW: Animation vars
+    //la: Animation vars
 	private final static int CLOSED=1;
 	private final static int OPEN=2;
 	private final static int CLOSING=3;
@@ -35,7 +35,7 @@ public class HolderLayout extends ViewGroup {
 	private float mLabelFactor;
 	private long mCurrentTime;
 	private float mPorcentajeScale;
-	//ADW: listener to dispatch open/close animation events
+	//la: listener to dispatch open/close animation events
 	private OnFadingListener mOnFadingListener;
     private int distH;
     private int distV;
@@ -152,7 +152,7 @@ public class HolderLayout extends ViewGroup {
 		return true;
     }
     /**
-     * ADW: easing functions for animation
+     * la: easing functions for animation
      */
 	static float easeOut (float time, float begin, float end, float duration) {
 		float change=end- begin;
@@ -168,7 +168,7 @@ public class HolderLayout extends ViewGroup {
 		return change/2.0f*((time-=2.0f)*time*time + 2.0f) + begin;
 	}
 	/**
-	 * ADW: Override drawing methods to do animation
+	 * la: Override drawing methods to do animation
 	 */
 	@Override
 	public void draw(Canvas canvas) {
@@ -236,7 +236,7 @@ public class HolderLayout extends ViewGroup {
 			height=(child.getHeight()-(child.getHeight()-mIconSize))*mScaleFactor;
 			if(shouldDrawLabels)child.setDrawingCacheEnabled(true);
 			if(shouldDrawLabels && child.getDrawingCache()!=null){
-				//ADW: try to manually draw labels
+				//la: try to manually draw labels
 				rl1.set(0,mIconSize,child.getDrawingCache().getWidth(),child.getDrawingCache().getHeight());
 				rl2.set(child.getLeft(),child.getTop()+mIconSize,child.getLeft()+child.getDrawingCache().getWidth(),child.getTop()+child.getDrawingCache().getHeight());
 				mLabelPaint.setAlpha((int) (mLabelFactor*255));

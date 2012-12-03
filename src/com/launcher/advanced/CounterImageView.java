@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 
 public class CounterImageView extends ImageView {
-    //ADW custom notifier counters
+    //la custom notifier counters
     private String mCounter=null;
     private int mCounterSize=0;
     private int mCounterPadding=0;

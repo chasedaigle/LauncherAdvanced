@@ -201,7 +201,7 @@ final class Utilities {
         return bitmap;
     }
     /**
-     *  ADW Create an icon drawable with reflection :P
+     *  la Create an icon drawable with reflection :P
      *  Thanks to http://www.inter-fuser.com/2009/12/android-reflections-with-bitmaps.html
      * @param icon
      * @param context
@@ -280,7 +280,7 @@ final class Utilities {
        }
     }
     /**
-     *  ADW Create an icon drawable scaled
+     *  la Create an icon drawable scaled
      *  Used for Action Buttons
      * @param icon
      * @param context
@@ -325,7 +325,7 @@ final class Utilities {
         }
     }
     /**
-     * ADW: Use donut syule wallpaper rendering, we need this method to fit wallpaper bitmap
+     * la: Use donut syule wallpaper rendering, we need this method to fit wallpaper bitmap
      */
     static Bitmap centerToFit(Bitmap bitmap, int width, int height, Context context) {
         final int bitmapWidth = bitmap.getWidth();

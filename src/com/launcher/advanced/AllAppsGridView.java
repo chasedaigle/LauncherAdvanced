@@ -39,7 +39,7 @@ public class AllAppsGridView extends GridView implements
 	private DragController mDragger;
 	private Launcher mLauncher;
 	private Paint mPaint;
-	// ADW: Animation vars
+	// la: Animation vars
 	private final static int CLOSED = 1;
 	private final static int OPEN = 2;
 	private final static int CLOSING = 3;
@@ -139,7 +139,7 @@ public class AllAppsGridView extends GridView implements
 	}
 
 	/**
-	 * ADW: easing functions for animation
+	 * la: easing functions for animation
 	 */
 	static float easeOut(float time, float begin, float end, float duration) {
 		float change = end - begin;
@@ -160,7 +160,7 @@ public class AllAppsGridView extends GridView implements
 	}
 
 	/**
-	 * ADW: Override drawing methods to do animation
+	 * la: Override drawing methods to do animation
 	 */
 	@Override
 	public void draw(Canvas canvas) {
@@ -237,7 +237,7 @@ public class AllAppsGridView extends GridView implements
 			if (shouldDrawLabels)
 				child.setDrawingCacheEnabled(true);
 			if (shouldDrawLabels && child.getDrawingCache() != null) {
-				// ADW: try to manually draw labels
+				// la: try to manually draw labels
 				rl1.set(0, mIconSize, child.getDrawingCache()
 						.getWidth(), child.getDrawingCache().getHeight());
 				rl2.set(child.getLeft(),

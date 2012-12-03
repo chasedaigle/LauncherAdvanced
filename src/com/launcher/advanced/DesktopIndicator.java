@@ -187,7 +187,7 @@ public class DesktopIndicator extends ViewGroup implements AnimationListener {
 	
 	/**
 	 * Simple line Indicator for desktop scrolling
-	 * @author adw
+	 * @author la
 	 *
 	 */
 	private class SliderIndicator extends View{
@@ -241,7 +241,7 @@ public class DesktopIndicator extends ViewGroup implements AnimationListener {
 		}
 	}
 	private void loadThemeColors(Context context){
-    	//ADW: Load the specified theme
+    	//la: Load the specified theme
     	String themePackage=AlmostNexusSettingsHelper.getThemePackageName(context, Launcher.THEME_DEFAULT);
     	Resources themeResources=null;
     	if(!themePackage.equals(Launcher.THEME_DEFAULT)){

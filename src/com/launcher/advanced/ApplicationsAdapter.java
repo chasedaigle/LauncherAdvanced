@@ -60,7 +60,7 @@ public class ApplicationsAdapter extends ArrayAdapter<ApplicationInfo> {
 		mCatalogueFilter = filter;
 
 		mInflater = LayoutInflater.from(context);
-		// ADW: Load textcolor and bubble color from theme
+		// la: Load textcolor and bubble color from theme
 		String themePackage = AlmostNexusSettingsHelper.getThemePackageName(
 				getContext(), Launcher.THEME_DEFAULT);
 		if (!themePackage.equals(Launcher.THEME_DEFAULT)) {
@@ -110,7 +110,7 @@ public class ApplicationsAdapter extends ArrayAdapter<ApplicationInfo> {
 		if (useThemeTextColor) {
 			textView.setTextColor(mTextColor);
 		}
-		//ADW: Custom font
+		//la: Custom font
 		if(themeFont!=null) textView.setTypeface(themeFont);
 		// so i'd better not use it, sorry themers
 		if (mBackground != null)
@@ -138,7 +138,7 @@ public class ApplicationsAdapter extends ArrayAdapter<ApplicationInfo> {
 		if (!viewCache.containsKey(info))
 			addToViewCache(parent, info);
 		View result = viewCache.get(info);
-        //ADW:Counters
+        //la:Counters
         ((CounterTextView)result).setCounter(info.counter, info.counterColor);
 		return result; 
 	}

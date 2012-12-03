@@ -460,7 +460,7 @@ public class WidgetListAdapter extends ScrollableBaseAdapter {
 	 * instead of blocking the UI thread
 	 * (yeah, don't know why but the runnable was not avoiding
 	 * the UI lock
-	 * @author adw
+	 * @author la
 	 *
 	 */
     private class MyQueryHandler extends AsyncQueryHandler {

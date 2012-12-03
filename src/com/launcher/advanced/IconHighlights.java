@@ -50,7 +50,7 @@ public class IconHighlights {
 	private static Drawable oldSelector(Context context, int type){
 		int selectedColor=AlmostNexusSettingsHelper.getHighlightsColorFocus(context);
 		int pressedColor=AlmostNexusSettingsHelper.getHighlightsColor(context);
-    	//ADW: Load the specified theme
+    	//la: Load the specified theme
     	String themePackage=AlmostNexusSettingsHelper.getThemePackageName(context, Launcher.THEME_DEFAULT);
     	Resources themeResources=null;
     	if(!themePackage.equals(Launcher.THEME_DEFAULT)){

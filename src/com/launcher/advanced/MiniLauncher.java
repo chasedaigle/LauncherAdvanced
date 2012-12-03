@@ -48,7 +48,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
     private int mCellHeight=20;
     private TransitionDrawable mBackground;
     /**
-     * ADW: Scrolling vars
+     * la: Scrolling vars
      */
     private Scroller mScroller;
     private float mLastMotionX;
@@ -266,7 +266,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
         if (!v.isInTouchMode() || mLauncher.isDesktopBlocked()) {
             return false;
         }
-		//ADW Delete the item and reposition the remaining ones
+		//la Delete the item and reposition the remaining ones
 		ItemInfo item=(ItemInfo) v.getTag();
 		//Now we need to update database (and position) for remainint items
 		final int count=getChildCount();
@@ -345,7 +345,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 
 	}
     /**
-     * ADW: Lets add scrolling capabilities :P
+     * la: Lets add scrolling capabilities :P
      */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
@@ -515,7 +515,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 
 	}
 	/**
-	 * ADW: Reload the proper icons
+	 * la: Reload the proper icons
 	 * This is mainly used when the apps from SDcard are available in froyo
 	 */
 	public void reloadIcons(String packageName){

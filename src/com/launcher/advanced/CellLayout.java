@@ -68,7 +68,7 @@ public class CellLayout extends WidgetCellLayout {
     private boolean mLastDownOnOccupiedCell = false;
     
     private final WallpaperManager mWallpaperManager;
-    //ADW: We'll have fixed rows/columns
+    //la: We'll have fixed rows/columns
 	private int mRows;
 	private int mColumns;
 	private int mPaginatorPadding;
@@ -140,7 +140,7 @@ public class CellLayout extends WidgetCellLayout {
     int getCountY() {
         return mPortrait ? mLongAxisCells : mShortAxisCells;
     }
-    //ADW: public getters to use when creating previews
+    //la: public getters to use when creating previews
     int getCellWidth() {
         return mCellWidth;
     }
@@ -164,7 +164,7 @@ public class CellLayout extends WidgetCellLayout {
     int getBottomPadding() {
         return mPortrait ? mLongAxisEndPadding : mShortAxisEndPadding;        
     }
-    //ADW: make dispatchDraw available to Launcher for creating previews
+    //la: make dispatchDraw available to Launcher for creating previews
     @Override
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
@@ -299,7 +299,7 @@ public class CellLayout extends WidgetCellLayout {
         cellInfo.maxVacantSpanY = Integer.MIN_VALUE;
         cellInfo.maxVacantSpanYSpanX = Integer.MIN_VALUE;
         cellInfo.clearVacantCells();
-        //ADW: i can't access current desktop rows/columns, so i try to catch the
+        //la: i can't access current desktop rows/columns, so i try to catch the
         //possible exception dirty way :-(
         try{
 	        if (occupied[x][y]) {
@@ -349,7 +349,7 @@ public class CellLayout extends WidgetCellLayout {
             }
         }
     }*/
-    //TODO: ADW.
+    //TODO: la.
     /**
      * I don't understand at all why the "findVacantCell" recursive method
      * do what it does, but seems there's something wrong with it
@@ -470,7 +470,7 @@ public class CellLayout extends WidgetCellLayout {
                 }
             }
         }*/
-        //ADW: Warning, commented code.
+        //la: Warning, commented code.
         //Why s it calling a recursive/loop method from within another loop!!!!????
         //Every time you longpress an item it does the findVacantCell zillions of times
         //eating a lot of cpu/ram!!!!!
@@ -543,7 +543,7 @@ public class CellLayout extends WidgetCellLayout {
         mPortrait = heightSpecSize > widthSpecSize;
         int tmpCellW=mCellWidth;
         int tmpCellH=mCellHeight;
-        //ADW: add padding if using top paginator dots AND indicator is enabled
+        //la: add padding if using top paginator dots AND indicator is enabled
         int topExtra=0;
         if(AlmostNexusSettingsHelper.getDesktopIndicator(getContext()) && AlmostNexusSettingsHelper.getDesktopIndicatorType(getContext())==DesktopIndicator.INDICATOR_TYPE_PAGER){
         	topExtra=mPaginatorPadding;

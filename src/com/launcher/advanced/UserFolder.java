@@ -100,7 +100,7 @@ public class UserFolder extends Folder implements DropTarget {
 		public FolderAdapter(Context context, ArrayList<ApplicationInfo> icons) {
 			super(context, 0,icons);
 			mInflater=LayoutInflater.from(context);
-			// ADW: Load textcolor and bubble color from theme
+			// la: Load textcolor and bubble color from theme
 			String themePackage = AlmostNexusSettingsHelper.getThemePackageName(
 					getContext(), Launcher.THEME_DEFAULT);
 			if (!themePackage.equals(Launcher.THEME_DEFAULT)) {
@@ -149,7 +149,7 @@ public class UserFolder extends Folder implements DropTarget {
 			if (useThemeTextColor) {
 				textView.setTextColor(mTextColor);
 			}
-			//ADW: Custom font
+			//la: Custom font
 			if(themeFont!=null) textView.setTypeface(themeFont);
 			// so i'd better not use it, sorry themers
 			if (mBackground != null)

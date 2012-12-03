@@ -55,8 +55,8 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
     private String mMsg;
     private Context mContext;
 
-    private static final String PREF_BACKUP_FILENAME = "adw_settings.xml";
-    private static final String CONFIG_BACKUP_FILENAME = "adw_launcher.db";
+    private static final String PREF_BACKUP_FILENAME = "la_settings.xml";
+    private static final String CONFIG_BACKUP_FILENAME = "la_launcher.db";
     private static final String NAMESPACE = "com.launcher.advanced";
 
     // Request codes for onResultActivity. That way we know the request donw when startActivityForResult was fired
@@ -67,7 +67,7 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
 
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
-		//TODO: ADW should i read stored values after addPreferencesFromResource?
+		//TODO: la should i read stored values after addPreferencesFromResource?
         if (Build.VERSION.SDK_INT >= 8)
             mMsg = getString(R.string.pref_message_restart_froyo);
         else
@@ -132,9 +132,9 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
             margin.setEnabled(false);
         }
         mContext=this;
-        //ADW: restart and reset preferences
-        Preference restart=findPreference("adw_restart");
-        Preference reset=findPreference("adw_reset");
+        //la: restart and reset preferences
+        Preference restart=findPreference("la_restart");
+        Preference reset=findPreference("la_reset");
         restart.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick(Preference preference) {
 				shouldRestart=true;
@@ -146,7 +146,7 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
 			public boolean onPreferenceClick(Preference preference) {
                 AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
                 alertDialog.setTitle(getResources().getString(R.string.title_dialog_xml));
-                alertDialog.setMessage(getResources().getString(R.string.pref_summary_adw_reset));
+                alertDialog.setMessage(getResources().getString(R.string.pref_summary_la_reset));
                 alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, getResources().getString(android.R.string.ok),
                     new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -173,8 +173,8 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
         }
 
         //Changelog screen
-        Preference adw_version=findPreference("adw_version");
-        adw_version.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+        Preference la_version=findPreference("la_version");
+        la_version.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick(Preference preference) {
 		        try {
 		        	AlertDialog builder = AlmostNexusSettingsHelper.ChangelogDialogBuilder.create(mContext);
@@ -277,7 +277,7 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
                 return true;
             }
         });
-        //TODO: ADW, theme settings
+        //TODO: la, theme settings
     	SharedPreferences sp=getPreferenceManager().getSharedPreferences();
     	final String themePackage=sp.getString("themePackageName", Launcher.THEME_DEFAULT);
         ListPreference lp = (ListPreference)findPreference("themePackageName");
@@ -309,7 +309,7 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
 	    SharedPreferences.Editor editor = sp.edit();
 	    editor.putString("themePackageName",packageName);
 	    //and update the preferences from the theme
-	    //TODO:ADW maybe this should be optional for the user
+	    //TODO:la maybe this should be optional for the user
         if(!packageName.equals(Launcher.THEME_DEFAULT)){
         	Resources themeResources=null;
         	try {
@@ -374,7 +374,7 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
     				editor.putString("main_dock_style", dock_style);
     				if(Integer.valueOf(dock_style)==Launcher.DOCK_STYLE_5 || Integer.valueOf(dock_style)==Launcher.DOCK_STYLE_NONE)editor.putBoolean("uiDots", false);
     			}
-    			//TODO:ADW We set the theme wallpaper. We should add this as optional...
+    			//TODO:la We set the theme wallpaper. We should add this as optional...
     			int wallpaperId=themeResources.getIdentifier("theme_wallpaper", "drawable", packageName.toString());
     			if(wallpaperId!=0){
     	            Options mOptions = new BitmapFactory.Options();
@@ -801,8 +801,8 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
         }
     }
     public void getThemes(View v){
-    	//TODO:warn theme devs to use "ADWTheme" as keyword.
-    	Uri marketUri = Uri.parse("market://search?q=ADWTheme");
+    	//TODO:warn theme devs to use "laTheme" as keyword.
+    	Uri marketUri = Uri.parse("market://search?q=laTheme");
         Intent marketIntent = new Intent(Intent.ACTION_VIEW).setData(marketUri);
         try {
             startActivity(marketIntent);
@@ -810,7 +810,7 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
             Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
         } catch (SecurityException e) {
             Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
-            e("ADW", "Launcher does not have the permission to launch " + marketIntent +
+            e("la", "Launcher does not have the permission to launch " + marketIntent +
                     ". Make sure to create a MAIN intent-filter for the corresponding activity " +
                     "or use the exported attribute for this activity.", e);
         }

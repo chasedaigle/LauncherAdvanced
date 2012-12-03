@@ -118,13 +118,13 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
     final Rect mClipBounds = new Rect();
     int mDrawerContentHeight;
     int mDrawerContentWidth;
-    //ADW: Dots Indicators
+    //la: Dots Indicators
     private Drawable mPreviousIndicator;
     private Drawable mNextIndicator;
     //rogro82@xda
     int mHomeScreens = 0;
     //int mHomeScreensLoaded = 0;
-    //ADW: port from donut wallpaper drawing
+    //la: port from donut wallpaper drawing
     private Paint mPaint;
     private int mWallpaperWidth;
     private int mWallpaperHeight;
@@ -133,16 +133,16 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
     private boolean lwpSupport=true;
     private boolean wallpaperHack=true;
     private BitmapDrawable mWallpaperDrawable;
-    //ADW: speed for desktop transitions
+    //la: speed for desktop transitions
     private int mScrollingSpeed=600;
-    //ADW: bounce scroll
+    //la: bounce scroll
     private int mScrollingBounce=50;
-    //ADW: sense zoom constants
+    //la: sense zoom constants
 	private static final int SENSE_OPENING = 1;
 	private static final int SENSE_CLOSING = 2;
 	private static final int SENSE_OPEN = 3;
 	private static final int SENSE_CLOSED = 4;
-    //ADW: sense zoom variables
+    //la: sense zoom variables
 	private boolean mSensemode=false;
 	private boolean isAnimating=false;
 	private long startTime;
@@ -155,19 +155,19 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 	// Wysie: Values taken from CyanogenMod (Donut era) Browser
 	private static final double ZOOM_SENSITIVITY = 1.6;
 	private static final double ZOOM_LOG_BASE_INV = 1.0 / Math.log(2.0 / ZOOM_SENSITIVITY);
-	//ADW: we don't need bouncing while using the previews
+	//la: we don't need bouncing while using the previews
 	private boolean mRevertInterpolatorOnScrollFinish=false;
-	//ADW: custom desktop rows/columns
+	//la: custom desktop rows/columns
 	private int mDesktopRows;
 	private int mDesktopColumns;
-	//ADW: use drawing cache while scrolling, etc.
+	//la: use drawing cache while scrolling, etc.
 	//Seems a lot of users with "high end" devices, like to have tons of widgets (the bigger, the better)
 	//On those devices, a drawing cache of a 4x4widget can be really big
 	//cause of their screen sizes, so the bitmaps are... huge...
 	//And as those devices can perform pretty well without cache... let's add an option... one more...
 	private int mDesktopCacheType=AlmostNexusSettingsHelper.CACHE_LOW;
 	private boolean mWallpaperScroll=true;
-    //ADW: variable to track the proper Y position to draw the wallpaer when the wallpaper hack is enabled
+    //la: variable to track the proper Y position to draw the wallpaer when the wallpaper hack is enabled
     //this is to avoid the small vertical position change from the wallpapermanager one.
     private int mWallpaperY;
     /**
@@ -198,7 +198,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 
         if(mDefaultScreen>mHomeScreens-1) mDefaultScreen=0;
 
-        //ADW: create desired screens programatically
+        //la: create desired screens programatically
         LayoutInflater layoutInflter=LayoutInflater.from(context);
         for(int i=0;i<mHomeScreens;i++){
         	CellLayout screen=(CellLayout)layoutInflter.inflate(R.layout.workspace_screen, this, false);
@@ -331,7 +331,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         clearVacantCache();
         mCurrentScreen = Math.max(0, Math.min(currentScreen, getChildCount() - 1));
         scrollTo(mCurrentScreen * getWidth(), 0);
-        //ADW: dots
+        //la: dots
         indicatorLevels(mCurrentScreen);
         if(mLauncher.getDesktopIndicator()!=null){
         	mLauncher.getDesktopIndicator().fullIndicate(mCurrentScreen);
@@ -404,7 +404,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
             return;
             //throw new IllegalStateException("The screen must be >= 0 and < " + getChildCount());
         }
-        //ADW: we cannot accept an item from a position greater that current desktop columns/rows
+        //la: we cannot accept an item from a position greater that current desktop columns/rows
         if(x>=mDesktopColumns || y>=mDesktopRows){
         	return;
         }
@@ -482,7 +482,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 		mWallpaperManager.setWallpaperOffsets(getWindowToken(), 0.5f, 0);
     }
     private void updateWallpaperOffset(int scrollRange) {
-    	//ADW: we set a condition to not move wallpaper beyond the "bounce" zone
+    	//la: we set a condition to not move wallpaper beyond the "bounce" zone
     	if(getScrollX()>0 && getScrollX()<getChildAt(getChildCount() - 1).getLeft()){
     		mWallpaperManager.setWallpaperOffsetSteps(1.0f / (getChildCount() - 1), 0 );
     		mWallpaperManager.setWallpaperOffsets(getWindowToken(), getScrollX() / (float) scrollRange, 0);
@@ -504,7 +504,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         } else if (mNextScreen != INVALID_SCREEN) {
         	int lastScreen = mCurrentScreen;
             mCurrentScreen = Math.max(0, Math.min(mNextScreen, getChildCount() - 1));
-            //ADW: dots
+            //la: dots
             //indicatorLevels(mCurrentScreen);
             Launcher.setScreen(mCurrentScreen);
             mNextScreen = INVALID_SCREEN;
@@ -515,9 +515,9 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
                     mLauncher.getDesktopIndicator().hide();
                 }
             }
-            //ADW: Revert back the interpolator when needed
+            //la: Revert back the interpolator when needed
             if(mRevertInterpolatorOnScrollFinish)setBounceAmount(mScrollingBounce);
-			//ADW: use intuit code to allow extended widgets
+			//la: use intuit code to allow extended widgets
 			// notify widget about screen changed
 			//REMOVED, seems its used for animated widgets, we don't need that yet :P
             /*if(mLauncher.isScrollableAllowed()){
@@ -536,7 +536,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 
     @Override
     public boolean isOpaque() {
-        //ADW: hack to use old rendering
+        //la: hack to use old rendering
         if(!lwpSupport && mWallpaperLoaded){
             //return !mWallpaper.hasAlpha();
         	return mWallpaperDrawable.getOpacity()==PixelFormat.OPAQUE;
@@ -548,19 +548,19 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
     @Override
     protected void dispatchDraw(Canvas canvas) {
         boolean restore = false;
-        //ADW: If using old wallpaper rendering method...
+        //la: If using old wallpaper rendering method...
         if(!lwpSupport && mWallpaperDrawable!=null){
         	float x = getScrollX() * mWallpaperOffset;
     		if (x + mWallpaperWidth < getRight() - getLeft()) {
     			x = getRight() - getLeft() - mWallpaperWidth;
     		}
-        	//ADW: added tweaks for when scrolling "beyond bounce limits" :P
+        	//la: added tweaks for when scrolling "beyond bounce limits" :P
     		if (getScrollX()<0)x=getScrollX();
         	if(getScrollX()>getChildAt(getChildCount() - 1).getRight() - (getRight() - getLeft())){
         		x=(getScrollX()-mWallpaperWidth+(getRight()-getLeft()));
         	}
         	//if(getChildCount()==1)x=getScrollX();
-        	//ADW lets center the wallpaper when there's only one screen...
+        	//la lets center the wallpaper when there's only one screen...
         	if(!mWallpaperScroll || getChildCount()==1)x=(getScrollX()-(mWallpaperWidth/2)+(getRight()/2));
         	final int y=mWallpaperY;
     		canvas.drawBitmap(mWallpaperDrawable.getBitmap(), x, y, mPaint);
@@ -651,7 +651,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         for (int i = 0; i < count; i++) {
             getChildAt(i).measure(widthMeasureSpec, heightMeasureSpec);
         }
-        //ADW: measure wallpaper when using old rendering
+        //la: measure wallpaper when using old rendering
     	if(!lwpSupport && mWallpaperDrawable!=null){
     		if (mWallpaperLoaded) {
     		    mWallpaperLoaded = false;
@@ -685,7 +685,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
                 childLeft += childWidth;
             }
         }
-        //ADW:updateWallpaperoffset
+        //la:updateWallpaperoffset
     	if(mWallpaperScroll)
     		updateWallpaperOffset();
     	else
@@ -909,7 +909,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         if(mDesktopCacheType!=AlmostNexusSettingsHelper.CACHE_DISABLED){
 	    	final int count = getChildCount();
 	        for (int i = 0; i < count; i++) {
-	        	//ADW: create cache only for current screen/previous/next.
+	        	//la: create cache only for current screen/previous/next.
 	        	if(i>=mCurrentScreen-1 || i<=mCurrentScreen+1){
 	        		final CellLayout layout = (CellLayout) getChildAt(i);
 	        		if(mDesktopCacheType==AlmostNexusSettingsHelper.CACHE_LOW)
@@ -1019,7 +1019,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         boolean changingScreens = whichScreen != mCurrentScreen;
 
         mNextScreen = whichScreen;
-        //ADW: dots
+        //la: dots
         indicatorLevels(mNextScreen);
 
         View focusedChild = getFocusedChild();
@@ -1086,7 +1086,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 	            Launcher.setScreen(mCurrentScreen);
 	        }
         }catch (Exception e) {
-			// TODO ADW: Weird bug http://code.google.com/p/android/issues/detail?id=3981
+			// TODO la: Weird bug http://code.google.com/p/android/issues/detail?id=3981
 			//Should be completely fixed on eclair
 			super.onRestoreInstanceState(null);
 			Log.d("WORKSPACE","Google bug http://code.google.com/p/android/issues/detail?id=3981 found, bypassing...");
@@ -1553,7 +1553,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
                         }
                     }
                 }else if (tag instanceof UserFolderInfo){
-                	//TODO: ADW: Maybe there are icons inside folders.... need to update them too
+                	//TODO: la: Maybe there are icons inside folders.... need to update them too
                     final UserFolderInfo info = (UserFolderInfo) tag;
                     final ArrayList<ApplicationInfo> contents = info.contents;
                     final int contentsCount = contents.size();
@@ -1621,7 +1621,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         };
     }
     /**************************************************
-     * ADW: Custom modifications
+     * la: Custom modifications
      */
 
     /**
@@ -1638,7 +1638,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
     	mNextIndicator.setLevel(numScreens-mCurrent-1);
     }
     /**
-     * ADW: Make a local copy of wallpaper bitmap to use instead wallpapermanager
+     * la: Make a local copy of wallpaper bitmap to use instead wallpapermanager
      * only when detected not being a Live Wallpaper
      */
 	public void setWallpaper(boolean fromIntentReceiver){
@@ -1668,14 +1668,14 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 		mLauncher.setWindowBackground(lwpSupport);
 	}
 	/**
-	 * ADW: Set the desktop scrolling speed (default scrolling duration)
+	 * la: Set the desktop scrolling speed (default scrolling duration)
 	 * @param speed
 	 */
 	public void setSpeed(int speed){
 		mScrollingSpeed=speed;
 	}
 	/**
-	 * ADW: Set the desktop scrolling bounce amount (0 to disable)
+	 * la: Set the desktop scrolling bounce amount (0 to disable)
 	 * @param amount
 	 */
 	public void setBounceAmount(int amount){
@@ -1685,7 +1685,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 	public void openSense(boolean open){
 		mScroller.abortAnimation();
 		enableChildrenCache();
-        //TODO:ADW We nedd to find the "longer row" and get the best children width
+        //TODO:la We nedd to find the "longer row" and get the best children width
         int maxItemsPerRow=0;
         int distro_set=getChildCount()-1;
         int numRows=distro[distro_set].length;
@@ -1764,7 +1764,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 	}
 
     /**
-     * ADW: easing functions for animation
+     * la: easing functions for animation
      */
 	static float easeOut (float time, float begin, float end, float duration) {
 		float change=end- begin;
@@ -1932,7 +1932,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 		postInvalidate();
 	}
 	/**
-	 * ADW: hide live wallpaper to speedup the app drawer
+	 * la: hide live wallpaper to speedup the app drawer
 	 * I think the live wallpaper needs to support the "hide" command
 	 * and not every LWP supports it.
 	 * http://developer.android.com/intl/de/reference/android/app/WallpaperManager.html#sendWallpaperCommand%28android.os.IBinder,%20java.lang.String,%20int,%20int,%20int,%20android.os.Bundle%29
@@ -1950,7 +1950,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
     	}
     }
     /**
-     * ADW: Remove the specified screen and all the contents
+     * la: Remove the specified screen and all the contents
      * Almos update remaining screens content inside model
      * @param screen
      */

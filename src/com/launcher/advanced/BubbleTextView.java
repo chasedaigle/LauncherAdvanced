@@ -45,7 +45,7 @@ public class BubbleTextView extends CounterTextView {
     private float mCornerRadius;
     private float mPaddingH;
     private float mPaddingV;
-    //adw custom corner radius themable
+    //la custom corner radius themable
     private float mCustomCornerRadius=8.0f;
     public BubbleTextView(Context context) {
         super(context);
@@ -68,7 +68,7 @@ public class BubbleTextView extends CounterTextView {
         mBackground=IconHighlights.getDrawable(getContext(),IconHighlights.TYPE_DESKTOP);
         setBackgroundDrawable(null);
         mBackground.setCallback(this);
-        //ADW: Load textcolor and bubble color from theme
+        //la: Load textcolor and bubble color from theme
         String themePackage=AlmostNexusSettingsHelper.getThemePackageName(getContext(), Launcher.THEME_DEFAULT);
         int color=getContext().getResources().getColor(R.color.bubble_dark_background);
         if(!themePackage.equals(Launcher.THEME_DEFAULT)){

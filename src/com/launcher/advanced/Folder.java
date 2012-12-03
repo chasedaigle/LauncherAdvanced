@@ -55,7 +55,7 @@ public class Folder extends LinearLayout implements DragSource, OnItemLongClickL
      */
     protected ApplicationInfo mDragItem;
     /**
-     * ADW:Theme vars
+     * la:Theme vars
      */
     private int mTextColor=0;
     private boolean useThemeTextColor=false;
@@ -82,7 +82,7 @@ public class Folder extends LinearLayout implements DragSource, OnItemLongClickL
         mCloseButton = (Button) findViewById(R.id.folder_close);
         mCloseButton.setOnClickListener(this);
         mCloseButton.setOnLongClickListener(this);
-    	//ADW: Load the specified theme
+    	//la: Load the specified theme
     	String themePackage=AlmostNexusSettingsHelper.getThemePackageName(getContext(), Launcher.THEME_DEFAULT);
     	PackageManager pm=getContext().getPackageManager();
     	Resources themeResources=null;

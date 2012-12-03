@@ -636,7 +636,7 @@ public class LauncherModel {
     void loadUserItems(boolean isLaunching, Launcher launcher, boolean localeChanged,
             boolean loadApplications) {
         if (DEBUG_LOADERS) d(LOG_TAG, "loading user items in " + Thread.currentThread().toString());
-        //ADW: load columns/rows settings
+        //la: load columns/rows settings
         mDesktopRows=AlmostNexusSettingsHelper.getDesktopRows(launcher);
         mDesktopColumns=AlmostNexusSettingsHelper.getDesktopColumns(launcher);
         if (isLaunching && isDesktopLoaded()) {
@@ -1282,7 +1282,7 @@ public class LauncherModel {
         if (desktopItems != null) {
             final int count = desktopItems.size();
             for (int i = 0; i < count; i++) {
-                //ADW: Don't load items outer current columns/rows limits
+                //la: Don't load items outer current columns/rows limits
                 if((desktopItems.get(i).cellX+(desktopItems.get(i).spanX-1))<mDesktopColumns &&
                 		(desktopItems.get(i).cellY+(desktopItems.get(i).spanY-1))<mDesktopRows)
                 addOccupiedCells(occupied, screen, desktopItems.get(i));
@@ -1357,7 +1357,7 @@ public class LauncherModel {
      */
     private static ApplicationInfo getApplicationInfo(PackageManager manager, Intent intent,
                                                       Context context) {
-        //ADW: Changed the check to avoid bypassing SDcard apps in froyo
+        //la: Changed the check to avoid bypassing SDcard apps in froyo
     	ComponentName componentName = intent.getComponent();
         if (componentName == null) {
             return null;
@@ -1378,7 +1378,7 @@ public class LauncherModel {
 	            info.title = "";
 	        }
         }else{
-        	//ADW: add default icon for apps on SD
+        	//la: add default icon for apps on SD
         	info.icon=manager.getDefaultActivityIcon();
         }
         info.itemType = LauncherSettings.Favorites.ITEM_TYPE_APPLICATION;

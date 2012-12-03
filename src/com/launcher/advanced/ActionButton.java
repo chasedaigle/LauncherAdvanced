@@ -111,7 +111,7 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
         	break;
         }
         final LauncherModel model = Launcher.getModel();
-        //TODO:ADW check this carefully
+        //TODO:la check this carefully
         //We need to remove current item from database before adding the new one
         if (info instanceof LauncherAppWidgetInfo) {
             model.removeDesktopAppWidget((LauncherAppWidgetInfo) info);
@@ -136,7 +136,7 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
 	}
 	protected void UpdateLaunchInfo(ItemInfo info){
     	mCurrentInfo=info;
-		//TODO:ADW extract icon and put it as the imageview src...
+		//TODO:la extract icon and put it as the imageview src...
 		Drawable myIcon=null;
 		if (info != null) {
 	        switch (info.itemType) {
@@ -229,7 +229,7 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
     	}
 	}
 	/**
-	 * ADW: show/hide background
+	 * la: show/hide background
 	 * @param enable
 	 */
 	public void hideBg(boolean hide){
@@ -253,7 +253,7 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
 		}
 	}
 	/**
-	 * ADW: Reload the proper icon
+	 * la: Reload the proper icon
 	 * This is mainly used when the apps from SDcard are available in froyo
 	 */
 	public void reloadIcon(String packageName){

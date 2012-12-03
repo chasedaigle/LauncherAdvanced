@@ -38,7 +38,7 @@ package org.metalev.multitouch.controller;
  * 
  * Known usages:
  * - Mickael Despesse's "Face Frenzy" face distortion app, to be published to the Market soon
- * - Yuan Chin's fork of ADW Launcher to support multitouch
+ * - Yuan Chin's fork of la Launcher to support multitouch
  * - David Byrne's fractal viewing app Fractoid
  * - mmin's handyCalc calculator
  * - My own "MultiTouch Visualizer 2" in the Market

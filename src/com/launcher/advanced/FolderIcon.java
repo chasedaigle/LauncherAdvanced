@@ -48,7 +48,7 @@ public class FolderIcon extends BubbleTextView implements DropTarget {
             UserFolderInfo folderInfo) {
 
         FolderIcon icon = (FolderIcon) LayoutInflater.from(launcher).inflate(resId, group, false);
-        //TODO:ADW Load icon from theme/iconpack
+        //TODO:la Load icon from theme/iconpack
         Drawable dclosed;
         Drawable dopen;
         final Resources resources = launcher.getResources();
@@ -121,7 +121,7 @@ public class FolderIcon extends BubbleTextView implements DropTarget {
         setCompoundDrawablesWithIntrinsicBounds(null, mCloseIcon, null, null);
     }
     /**
-     * ADW: Load the floder icon drawables from the theme
+     * la: Load the floder icon drawables from the theme
      * @param context
      * @param manager
      * @param themePackage

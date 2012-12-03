@@ -139,7 +139,7 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
 
     public void onDragEnter(DragSource source, int x, int y, int xOffset, int yOffset,
             Object dragInfo) {
-    	//ADW: show uninstall message
+    	//la: show uninstall message
     	final ItemInfo item = (ItemInfo) dragInfo;
         mTransition.reverseTransition(TRANSITION_DURATION);
     	if (item instanceof ApplicationInfo || item instanceof LauncherAppWidgetInfo){
@@ -156,8 +156,8 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
     public void onDragExit(DragSource source, int x, int y, int xOffset, int yOffset,
             Object dragInfo) {
         mTransition.reverseTransition(TRANSITION_DURATION);
-        //ADW: not show uninstall message
-        //ADW We need to call this delayed cause onDragExit is always called just before onDragEnd :(
+        //la: not show uninstall message
+        //la We need to call this delayed cause onDragExit is always called just before onDragEnd :(
     	mHandler.removeCallbacks(mShowUninstaller);
         if(shouldUninstall){
 	        mUninstallTarget = false;
@@ -193,8 +193,8 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
             mTransition.resetTransition();
             startAnimation(mInAnimation);
             setVisibility(VISIBLE);
-            //ADW Store app data for uninstall if its an Application
-            //ADW Thanks to irrenhaus@xda & Rogro82@xda :)
+            //la Store app data for uninstall if its an Application
+            //la Thanks to irrenhaus@xda & Rogro82@xda :)
 			if(item instanceof ApplicationInfo){
 				try{
 					final ApplicationInfo appInfo=(ApplicationInfo) item;
@@ -206,7 +206,7 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
 						ResolveInfo res = mgr.resolveActivity(appInfo.intent, 0);
 						UninstallPkg = res.activityInfo.packageName;
 					}
-		            // Dont uninstall ADW ;-)
+		            // Dont uninstall la ;-)
 		            if (this.getClass().getPackage().getName().equals(UninstallPkg))
 		            	UninstallPkg = null;
 
@@ -315,7 +315,7 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
             return false;
         }
     }
-    //ADW Runnable to show the uninstall message (or reset the uninstall status)
+    //la Runnable to show the uninstall message (or reset the uninstall status)
     private final Runnable mShowUninstaller = new Runnable() {
 		public void run() {
     	       shouldUninstall=mUninstallTarget;

@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 public class CounterTextView extends TextView {
-    //ADW custom notifier counters
+    //la custom notifier counters
     private String mCounter=null;
     private int mCounterSize=0;
     private int mCounterPadding=0;

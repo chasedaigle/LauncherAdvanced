@@ -50,7 +50,7 @@ public class PreviewPager extends ViewGroup {
 	}
 	private void createLayout(){
 		detachAllViewsFromParent();
-    	//ADW: Load the specified theme
+    	//la: Load the specified theme
     	String themePackage=AlmostNexusSettingsHelper.getThemePackageName(getContext(), Launcher.THEME_DEFAULT);
     	PackageManager pm=getContext().getPackageManager();
     	Resources themeResources=null;

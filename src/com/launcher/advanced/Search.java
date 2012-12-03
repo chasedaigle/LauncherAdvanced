@@ -287,7 +287,7 @@ public class Search extends LinearLayout
 
         mSearchText.setOnLongClickListener(this);
         mVoiceButton.setOnLongClickListener(this);
-    	//ADW: Load the specified theme
+    	//la: Load the specified theme
     	String themePackage=AlmostNexusSettingsHelper.getThemePackageName(getContext(), Launcher.THEME_DEFAULT);
     	PackageManager pm=getContext().getPackageManager();
     	Resources themeResources=null;

@@ -92,7 +92,7 @@
     <string name="menu_search">Search</string>
     <!-- Noun, menu item used to show the system settings -->
     <string name="menu_settings">Settings</string>
-    <string name="menu_adw_settings">LauncherAdvanced Settings</string>
+    <string name="menu_la_settings">LauncherAdvanced Settings</string>
 
     <!-- Permissions: -->
     <string name="permlab_install_shortcut">install shortcuts</string>
@@ -113,9 +113,9 @@
 
     <!-- Text to show user in place of a gadget when we can't display it properly -->
     <string name="gadget_error_text">Problem loading widget</string>
-    <!-- ADW Version Information -->
-    <string name="adw_version">Version 0.7 - F.A.Projects</string>
-    <!-- ADW Settings -->
+    <!-- la Version Information -->
+    <string name="la_version">Version 0.7 - F.A.Projects</string>
+    <!-- la Settings -->
     <string name="pref_label_settings">LauncherAdvanced Settings</string>
     <!-- Screen preferences -->
     <string name="pref_title_screen_preferences">Screen preferences</string>
@@ -210,7 +210,7 @@
     <string name="pref_summary_hide_icon_labels">Hide desktop icon labels</string>
 
     <string name="pref_title_build_info">Information Developer - EsromG5</string>
-    <string name="pref_title_adw_version">LauncherAdvanced Version</string>
+    <string name="pref_title_la_version">LauncherAdvanced Version</string>
 
     <string name="pref_title_icon_highlights">Highlights press color</string>
     <string name="pref_summary_icon_highlights">Set the color for icon press</string>
@@ -365,10 +365,10 @@
 	<string name="rename_group_label">Catalog Name</string>
 	<string name="show_catalog">Show Catalog \"%s\"</string>
 	
-	<string name="pref_title_adw_restart">Restart LauncherAdvanced</string>
-	<string name="pref_summary_adw_restart">Close and restart LauncherAdvanced</string>
-	<string name="pref_title_adw_reset">Reset LauncherAdvanced</string>
-	<string name="pref_summary_adw_reset">Clear LauncherAdvanced settings and restart</string>
+	<string name="pref_title_la_restart">Restart LauncherAdvanced</string>
+	<string name="pref_summary_la_restart">Close and restart LauncherAdvanced</string>
+	<string name="pref_title_la_reset">Reset LauncherAdvanced</string>
+	<string name="pref_summary_la_reset">Clear LauncherAdvanced settings and restart</string>
 	
 	<string name="need_scrollable">The widget you want to add needs \'scrollable widgets support\' which is currently disabled.\nDo you want to enable it now?</string>
 	<string name="scrollable_api_required">This widget needs an updated version of LauncherAdvanced.\nPlease update or contact widget developer</string>

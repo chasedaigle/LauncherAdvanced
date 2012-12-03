@@ -151,7 +151,7 @@ public class ApplicationInfo extends ItemInfo {
 		// check for self-comparison
 		if (this == aThat)
 			return true;
-		//ADW: Shortcuts (contacts, bookmarks, etc) don't have component.....
+		//la: Shortcuts (contacts, bookmarks, etc) don't have component.....
 		if(this.intent.getComponent()==null)
 			return super.equals(aThat);
 		// use instanceof instead of getClass here for two reasons

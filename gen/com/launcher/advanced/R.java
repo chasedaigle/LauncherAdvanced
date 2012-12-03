@@ -574,6 +574,8 @@ containing a value of this type.
         public static final int timepicker_up_selected=0x7f0200ae;
         public static final int wallpaper_adw=0x7f0200af;
         public static final int wallpaper_adw_small=0x7f0200b0;
+        public static final int wallpaper_la=0x7f0200b1;
+        public static final int wallpaper_la_small=0x7f0200b2;
     }
     public static final class id {
         public static final int Button_Ok_App=0x7f07000f;
@@ -749,10 +751,6 @@ containing a value of this type.
         /**  Displayed when user selects a shortcut for an app that was uninstalled 
          */
         public static final int activity_not_found=0x7f08000f;
-        public static final int adw_changelog=0x7f080000;
-        /**  ADW Version Information 
-         */
-        public static final int adw_version=0x7f080034;
         /**  Application name 
          */
         public static final int application_name=0x7f08000a;
@@ -817,18 +815,22 @@ containing a value of this type.
          */
         public static final int group_widgets=0x7f08001c;
         public static final int import_export_sdcard_unmounted=0x7f080093;
+        public static final int la_changelog=0x7f080000;
+        /**  la Version Information 
+         */
+        public static final int la_version=0x7f080034;
         /**  Options in "Add to Home" dialog box; Title of the group containing the list of all launcher actions 
          */
         public static final int launcher_actions=0x7f080018;
         /**  Verb, menu item used to add an item on the desktop 
          */
         public static final int menu_add=0x7f080024;
-        public static final int menu_adw_settings=0x7f08002a;
         public static final int menu_delete=0x7f080025;
         public static final int menu_edit=0x7f0800dc;
         /**  Title of dialog box 
          */
         public static final int menu_item_add_item=0x7f080015;
+        public static final int menu_la_settings=0x7f08002a;
         public static final int menu_lock=0x7f080111;
         /**  Verb, menu item used to initiate global search 
          */
@@ -890,9 +892,9 @@ containing a value of this type.
         public static final int pref_dialog_title_color_picker=0x7f08007e;
         public static final int pref_dialog_zoom_effect_speed=0x7f080049;
         public static final int pref_label_activities=0x7f0800de;
-        /**  ADW Settings 
- ADW Settings 
- ADW Settings 
+        /**  la Settings 
+ la Settings 
+ la Settings 
          */
         public static final int pref_label_settings=0x7f080035;
         public static final int pref_label_shirtcuts=0x7f0800dd;
@@ -901,8 +903,6 @@ containing a value of this type.
         public static final int pref_summary_ab_scale_factor=0x7f08006e;
         public static final int pref_summary_ab_tint=0x7f080109;
         public static final int pref_summary_ab_tint_color=0x7f08010b;
-        public static final int pref_summary_adw_reset=0x7f0800f6;
-        public static final int pref_summary_adw_restart=0x7f0800f4;
         public static final int pref_summary_animated_drawer=0x7f08004e;
         public static final int pref_summary_autosize_icons=0x7f0800af;
         public static final int pref_summary_behaviour_preferences=0x7f080104;
@@ -937,6 +937,8 @@ containing a value of this type.
         public static final int pref_summary_home_button_binding=0x7f080060;
         public static final int pref_summary_icon_highlights=0x7f080077;
         public static final int pref_summary_icon_highlights_focus=0x7f080079;
+        public static final int pref_summary_la_reset=0x7f0800f6;
+        public static final int pref_summary_la_restart=0x7f0800f4;
         public static final int pref_summary_main_dock_style=0x7f080102;
         public static final int pref_summary_new_selectors=0x7f08007b;
         public static final int pref_summary_notif_receiver=0x7f0800fc;
@@ -967,9 +969,6 @@ containing a value of this type.
         public static final int pref_title_ab_scale_factor=0x7f08006d;
         public static final int pref_title_ab_tint=0x7f080108;
         public static final int pref_title_ab_tint_color=0x7f08010a;
-        public static final int pref_title_adw_reset=0x7f0800f5;
-        public static final int pref_title_adw_restart=0x7f0800f3;
-        public static final int pref_title_adw_version=0x7f080075;
         public static final int pref_title_animated_drawer=0x7f08004d;
         public static final int pref_title_autosize_icons=0x7f0800ae;
         public static final int pref_title_behaviour_preferences=0x7f080103;
@@ -1022,6 +1021,9 @@ containing a value of this type.
         public static final int pref_title_icon_highlights_focus=0x7f080078;
         public static final int pref_title_import_export=0x7f080087;
         public static final int pref_title_indicators_preferencecategory=0x7f0800c9;
+        public static final int pref_title_la_reset=0x7f0800f5;
+        public static final int pref_title_la_restart=0x7f0800f3;
+        public static final int pref_title_la_version=0x7f080075;
         public static final int pref_title_main_dock_style=0x7f080101;
         public static final int pref_title_new_selectors=0x7f08007a;
         public static final int pref_title_notif_receiver=0x7f0800fb;

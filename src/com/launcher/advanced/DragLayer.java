@@ -134,7 +134,7 @@ public class DragLayer extends FrameLayout implements DragController {
     private int mAnimationState = ANIMATION_STATE_DONE;
 
     private InputMethodManager mInputMethodManager;
-    //ADW: Vars to use on fallback when the view bitmap cannot be generated
+    //la: Vars to use on fallback when the view bitmap cannot be generated
     private int mDrawWidth;
     private int mDrawHeight;
     private Paint mRectPaint;

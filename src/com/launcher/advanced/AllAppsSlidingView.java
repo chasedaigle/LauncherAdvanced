@@ -139,7 +139,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
      * to avoid creating new ones
      */
     final RecycleBin mRecycler = new RecycleBin();
-    //ADW:Hack the texture thing to make scrolling faster
+    //la:Hack the texture thing to make scrolling faster
     //private boolean forceOpaque=false;
     //private Bitmap mTexture;
     private Paint mPaint;
@@ -147,17 +147,17 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
 	private boolean mBlockLayouts;
     private PreviewPager mPager;
 	private int mScrollToScreen;
-	//ADW: Animation variables
+	//la: Animation variables
 	private boolean isAnimating=false;
 	private OnFadingListener mFadingListener;
 	private int mBgAlpha=255;
 	private int mTargetAlpha=255;
 	private int mAnimationDuration=800;
-    //ADW: speed for new scrolling transitions
+    //la: speed for new scrolling transitions
     private final int mScrollingSpeed=600;
-    //ADW: bounce scroll
+    //la: bounce scroll
     private final int mScrollingBounce=50;
-    //ADW:Bg color
+    //la:Bg color
     private int mBgColor=0xFF000000;
     private int mStatus=HolderLayout.OnFadingListener.CLOSE;
 	public AllAppsSlidingView(Context context) {
@@ -206,7 +206,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
         mTouchSlop = configuration.getScaledTouchSlop();
         mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
         mPager=new PreviewPager(getContext());
-        //ADW: listener to handle holderlayouts animations
+        //la: listener to handle holderlayouts animations
         mFadingListener=new OnFadingListener() {
 			public void onUpdate(int Status) {
 				// TODO Auto-generated method stub
@@ -222,7 +222,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
 			public void onAlphaChange(float alphaPercent) {
 				// TODO Auto-generated method stub
 				mBgAlpha=(int)(mTargetAlpha*alphaPercent);
-				//ADW: hack to redraw pager background..... :-(
+				//la: hack to redraw pager background..... :-(
 				invalidate(mPager.getLeft(), mPager.getTop(), mPager.getRight(), mPager.getBottom());
 			}
 		};
@@ -580,7 +580,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
                 final VelocityTracker velocityTracker = mVelocityTracker;
                 velocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
                 int velocityX = (int) velocityTracker.getXVelocity();
-                //ADW: remove for now the "multi-page scrolling", is causing a lot of mess...
+                //la: remove for now the "multi-page scrolling", is causing a lot of mess...
                 /*int moveScreens=Math.round(velocityX/1000);
                 int destinationScreen=mCurrentScreen-moveScreens;
                 if(destinationScreen<0) destinationScreen=0;
@@ -902,7 +902,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
 	    	Rect frame = new Rect();
 	    	int realScreen=mCurrentHolder;
 	    	final ViewGroup h=(ViewGroup)getChildAt(realScreen);
-	    	//ADW: fix possible nullPointerException when flinging too fast
+	    	//la: fix possible nullPointerException when flinging too fast
 	    	if(h!=null){
 		    	for(int i=0;i<h.getChildCount();i++){
 		        	final View child = h.getChildAt(i);
@@ -1031,7 +1031,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
     	}
     	return pages;
     }
-    //TODO:ADW Focus things :)
+    //TODO:la Focus things :)
     /**
      * @return True if the current touch mode requires that we draw the selector in the pressed
      *         state.
@@ -1154,7 +1154,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
     public int getCacheColorHint() {
         return mCacheColorHint;
     }
-    //TODO: ADW Recycle Bin
+    //TODO: la Recycle Bin
     private void RecycleOuterViews(int screen){
     	final int startPos=(screen*mNumColumns*mNumRows);//-mFirstPosition;
     	final int endPos=startPos+(mNumColumns*mNumRows)-1;
@@ -1457,7 +1457,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
         }
     }
 
-    //TODO:ADW Helper classes
+    //TODO:la Helper classes
     final class CheckForTap implements Runnable {
         public void run() {
             if (mTouchState == TOUCH_STATE_DOWN) {
@@ -1680,7 +1680,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
     protected boolean checkLayoutParams(ViewGroup.LayoutParams p) {
         return p instanceof AllAppsSlidingView.LayoutParams;
     }
-    //TODO:ADW DATA HANDLING
+    //TODO:la DATA HANDLING
     class AdapterDataSetObserver extends DataSetObserver {
 
         private Parcelable mInstanceState = null;
@@ -1733,7 +1733,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
         }
     }
 
-    //TODO: ADW Events
+    //TODO: la Events
 
 	public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
 		// TODO Auto-generated method stub
@@ -1890,7 +1890,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
 		mAnimationDuration=speed;
 	}
 	/**
-	 * ADW: find the current child page
+	 * la: find the current child page
 	 */
 	private void findCurrentHolder(){
     	for(int i=1;i<getChildCount();i++){

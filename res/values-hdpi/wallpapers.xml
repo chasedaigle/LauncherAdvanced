@@ -17,6 +17,6 @@
 
 <resources>
     <string-array name="wallpapers" translatable="false">
-        <item>wallpaper_adw</item>
+        <item>wallpaper_la</item>
     </string-array>
 </resources>

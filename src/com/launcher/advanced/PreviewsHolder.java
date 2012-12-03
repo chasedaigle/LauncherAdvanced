@@ -91,7 +91,7 @@ public class PreviewsHolder extends ViewGroup {
         
         int distro_set=count-1;
         int childPos=0;
-        //TODO:ADW We nedd to find the "longer row" and get the best children width
+        //TODO:la We nedd to find the "longer row" and get the best children width
         int maxItemsPerRow=0;
         for(int rows=0;rows<distro[distro_set].length;rows++){
         		if(distro[distro_set][rows]>maxItemsPerRow){

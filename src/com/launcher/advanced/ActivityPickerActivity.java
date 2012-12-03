@@ -90,7 +90,7 @@ public class ActivityPickerActivity extends ExpandableListActivity {
 	}
 	/**
 	 * ExpandableListAdapter to handle packages and activities
-	 * @author adw
+	 * @author la
 	 *
 	 */
     public class MyExpandableListAdapter extends BaseExpandableListAdapter {
